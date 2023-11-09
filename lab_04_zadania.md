@@ -111,7 +111,11 @@ INSERT INTO statek(nazwa_statku, rodzaj_statku, data_wodowania, max_ladownosc) V
 ```
 ## 5.4
 ``` SQL
+ALTER TABLE postac ADD COLUMN funkcja VARCHAR(45);
 ```
-
+## 5.5
+``` SQL
+UPDATE postac SET
+```
 
 
