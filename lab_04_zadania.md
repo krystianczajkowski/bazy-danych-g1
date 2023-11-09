@@ -1,5 +1,5 @@
-# Tabela postac:
-## 1. Podpunkt
+# LIST
+## 1.1
 ``` SQL
 CREATE TABLE `postac` (
   `id_postaci` int NOT NULL AUTO_INCREMENT,
@@ -9,13 +9,13 @@ CREATE TABLE `postac` (
   `wiek` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id_postaci`);
 ```
-## 2. Podpunkt
+## 1.2
 ``` SQL
 INSERT INTO postac(nazwa, rodzaj, data_ur, wiek) VALUES('Bjorn', 1, '1254-11-09', 22);
 INSERT INTO postac(nazwa, rodzaj, data_ur, wiek) VALUES('Drozd', 2, '1274-11-09', 2);
 INSERT INTO postac(nazwa, rodzaj, data_ur, wiek) VALUES('Tesciowa', 1, '1234-11-09', 62);
 ```
-## 3. Podpunkt
+## 1.3
 ``` SQL
 UPDATE postac SET wiek=88 WHERE nazwa='Tesciowa';
 ```
