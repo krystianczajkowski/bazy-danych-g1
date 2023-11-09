@@ -74,14 +74,16 @@ INSERT INTO izba(adres_budynku, nazwa_izby, metraz, wlasciciel) VALUES ('ul. Rey
 ``` SQL
 CREATE TABLE przetwory(
 id_przetworu INT PRIMARY KEY AUTO_INCREMENT,
-rok_produkcji YEAR DEFAULT 1654,
-id_wykonawcy INT,
+rok_produkcji INT DEFAULT 1654,
 zawartosc VARCHAR(255),
 dodatek VARCHAR(255) DEFAULT 'papryczka chilli',
+id_wykonawcy INT,
 id_konsumenta INT,
 FOREIGN KEY(id_wykonawcy) REFERENCES postac(id_postaci),
-FOREIGN KEY(id_konsumenta) REFERENCES postac(id_postaci);
+FOREIGN KEY(id_konsumenta) REFERENCES postac(id_postaci)
+);
 ```
+_Próbowałem_ *`rok_produkcji YEAR DEFAULT (YEAR('1654-11-08'))`* _ale nie działało_
 ## 4.2
 ``` SQL
 INSERT INTO przetwory(id_wykonawcy, zawartosc, id_konsumenta) VALUES (1, 'Bigos', 3);
@@ -115,7 +117,26 @@ ALTER TABLE postac ADD COLUMN funkcja VARCHAR(45);
 ```
 ## 5.5
 ``` SQL
-UPDATE postac SET
+UPDATE postac SET funkcja='kapitan' WHERE id_postaci=1;
 ```
+## 5.6
+``` SQL
+ALTER TABLE postac ADD COLUMN nazwa_statku VARCHAR(255);
+ALTER TABLE postac ADD CONSTRAINT FOREIGN KEY(nazwa_statku) REFERENCES statek(nazwa_statku);
+```
+## 5.7
+```SQL
+UPDATE postac SET nazwa_statku='Mors' WHERE rodzaj in (1,2);
+```
+
+## 5.8
+``` SQL
+DELETE FROM izba WHERE nazwa_izby='spizarnia';
+```
+
+## 5.9
+```SQL
+DROP TABLE izba;
+```  
 
 
