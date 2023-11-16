@@ -74,7 +74,7 @@ INSERT INTO izba(adres_budynku, nazwa_izby, metraz, wlasciciel) VALUES ('ul. Rey
 ``` SQL
 CREATE TABLE przetwory(
 id_przetworu INT PRIMARY KEY AUTO_INCREMENT,
-rok_produkcji INT DEFAULT 1654,
+rok_produkcji SMALLINT DEFAULT 1654,
 zawartosc VARCHAR(255),
 dodatek VARCHAR(255) DEFAULT 'papryczka chilli',
 id_wykonawcy INT,
@@ -83,7 +83,6 @@ FOREIGN KEY(id_wykonawcy) REFERENCES postac(id_postaci),
 FOREIGN KEY(id_konsumenta) REFERENCES postac(id_postaci)
 );
 ```
-_Próbowałem_ *`rok_produkcji YEAR DEFAULT (YEAR('1654-11-08'))`* _ale nie działało_
 ## 4.2
 ``` SQL
 INSERT INTO przetwory(id_wykonawcy, zawartosc, id_konsumenta) VALUES (1, 'Bigos', 3);
