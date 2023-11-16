@@ -1,3 +1,4 @@
+# Link do [zadań](https://github.com/kropiak/bazy_inf/blob/main/lab_04/lab_04.pdf)
 # LIST
 ## 1.1
 ``` SQL
