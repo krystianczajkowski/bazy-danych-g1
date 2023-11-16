@@ -101,7 +101,9 @@ INSERT INTO postac(nazwa, rodzaj, data_ur, wiek) VALUES('Halfdan', 1, '1252-11-0
 ``` SQL
 CREATE TABLE statek(
 nazwa_statku VARCHAR(255) PRIMARY KEY,
-rodzaj_statku ENUM('barka', 'pchacz', 'prom', 'roporudomasowiec', 'frachtowiec', 'tramwaj wodny', 'uzbrojony statek handlowy'),
+rodzaj_statku ENUM('barka', 'pchacz', 'prom',
+                   'roporudomasowiec', 'frachtowiec',
+                   'tramwaj wodny', 'uzbrojony statek handlowy'),
 data_wodowania DATE,
 max_ladownosc INT UNSIGNED);
 ```
