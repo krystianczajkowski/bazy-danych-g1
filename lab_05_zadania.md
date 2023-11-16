@@ -3,8 +3,15 @@
 ## 1.1 
 
 ``` SQL
-DELTE FROM postac WHERE wiek = (SELECT MAX(wiek) FROM postac WHERE rodzaj =1) AND id_postaci != 1;
-DELTE FROM postac WHERE wiek = (SELECT MAX(wiek) FROM postac WHERE rodzaj =1) AND id_postaci != 1;
+delete from postac where rodzaj=1 and nazwa <> 'Bjorn' order by data_urodzenia asc limit 2;
 ```
-## 1.2
 
+## 1.2
+``` SQL
+alter table przetwory drop foreign key przetwory_ibfk_1;
+alter table przetwory drop foreign key przetwory_ibfk_2;
+alter table postac drop foreign key postac_ibfk_1;
+alter table walizka drop foreign key walizka_ibfk_1;
+alter table postac modify id_postaci int;
+alter table postac drop primary key;
+```
