@@ -19,33 +19,42 @@ alter table postac drop primary key;
 
 ## 2.1
 ``` SQL
-alter table postac add pesel(char(11) primary key);
+alter table postac add pesel char(11);
+alter table postac add primary key(pesel);
 ```
 ## 2.2
 ``` SQL
-alter table postac modify rodzaj ('wiking', 'ptak', 'kobieta', 'syrena');
+alter table postac modify rodzaj enum('wiking', 'ptak', 'kobieta', 'syrena');
 ```
 ## 2.3
 ```SQL
-inseret into postac ('Gertruda Nieszczera',
+insert into postac(id_postaci, pesel, nazwa, rodzaj, data_ur, wiek) values (7, '45698712300', 'Gertruda Nieszczera', 4, '1201-11-22', 78);
 ```
 
 # PRZECHYŁY
 ## 3.1
 ``` SQL
+update postac set nazwa_statku = 'Mors' where nazwa like '%a%';
 ```
 
 ## 3.2
 ```SQL
+update statek set max_ladownosc = max_ladownosc * 0.7 where data_wodowania beetween '1901-01-01' and '2000-11-31';
 ```
 ## 3.3
+```SQL
+alter table postac add check (wiek <= 1000);
+```
 
 # WĄŻ LOKO
 ## 4.1
 ``` SQL
+insert into postac (id_postaci, pesel, nazwa, data_ur, wiek) values (8, '00000000000','Loko', '666-06-06', 611);
 ```
 ## 4.2
 ```SQL
+create table marynarz like postac;
+insert into marynarz (select * from postac WHERE nazwa_statku is not null);
 ```
 ## 4.3 
 ```SQL
@@ -53,12 +62,15 @@ inseret into postac ('Gertruda Nieszczera',
 # SZTORM
 ## 5.1
 ``` SQL
+update postac set nazwa_statku = NULL where pesel;
 ```
 ## 5.2
 ``` SQL
+delete from postac where rodzaj = 1 and nazwa != 'Bjorn' limit 1;
 ```
 ## 5.3
 ``` SQL
+delete from statek where nazwa_statku is not null;
 ```
 ## 5.4
 ``` SQL
@@ -73,4 +85,5 @@ wiek int unsigned
 ```
 ## 5.6
 ``` SQL
+insert into zwierz (select * from postac where rodzaj = 2 or rodzaj = 4);
 ```
