@@ -36,13 +36,14 @@ insert into postac(id_postaci, pesel, nazwa, rodzaj, data_ur, wiek) values (7, '
 # PRZECHYŁY
 ## 3.1
 ``` SQL
--- update postac set nazwa_statku = (select nazwa_statku from postac where nazwa = 'Bjorn') where nazwa like '%a%';
 update postac set nazwa_statku = 'Mors' where nazwa like '%a%';
+-- update postac set nazwa_statku = 'Mors' where nazwa regexp '[a]';
 ```
 
 ## 3.2
 ```SQL
 update statek set max_ladownosc = max_ladownosc * 0.7 where data_wodowania beetween '1901-01-01' and '2000-11-31';
+--                                                          year(data_wodowania) between 1901 and 2000;
 ```
 ## 3.3
 ```SQL
