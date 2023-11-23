@@ -93,5 +93,6 @@ wiek int unsigned);
 ## 5.6
 > poprawić!
 ``` SQL
-insert into zwierz(nazwa, wiek) values (select nazwa, wiek from postac where rodzaj = 2 or rodzaj = 5);
+insert into zwierz(nazwa, wiek) select nazwa, wiek from postac where rodzaj = 'ptak' or rodzaj = 'gad';
 ```
+> tablesgenerator.com
