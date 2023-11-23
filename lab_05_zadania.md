@@ -90,5 +90,5 @@ wiek int unsigned
 ```
 ## 5.6
 ``` SQL
-insert into zwierz (select * from postac where rodzaj = 2 or rodzaj = 4);
+insert into zwierz(nazwa, wiek) values (select nazwa, wiek from postac where rodzaj = 2 or rodzaj = 5);
 ```
