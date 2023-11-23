@@ -36,6 +36,7 @@ insert into postac(id_postaci, pesel, nazwa, rodzaj, data_ur, wiek) values (7, '
 # PRZECHYŁY
 ## 3.1
 ``` SQL
+-- update postac set nazwa_statku = (select nazwa_statku from postac where nazwa = 'Bjorn') where nazwa like '%a%';
 update postac set nazwa_statku = 'Mors' where nazwa like '%a%';
 ```
 
