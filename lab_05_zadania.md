@@ -88,9 +88,10 @@ drop table statek;
 create table zwierz (
 zwierz_id int primary key auto_increment,
 nazwa varchar(55),
-wiek int unsigned
+wiek int unsigned);
 ```
 ## 5.6
+> poprawić!
 ``` SQL
 insert into zwierz(nazwa, wiek) values (select nazwa, wiek from postac where rodzaj = 2 or rodzaj = 5);
 ```
