@@ -91,7 +91,6 @@ nazwa varchar(55),
 wiek int unsigned);
 ```
 ## 5.6
-> poprawić!
 ``` SQL
 insert into zwierz(nazwa, wiek) select nazwa, wiek from postac where rodzaj = 'ptak' or rodzaj = 'gad';
 ```
