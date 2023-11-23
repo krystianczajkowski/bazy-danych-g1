@@ -62,7 +62,7 @@ create table marynarz like postac;
 insert into marynarz (select * from postac WHERE nazwa_statku is not null);
 ```
 ## 4.3
-> Przy skorzystaniu z drugiej opcji w [4.2]()
+> Przy skorzystaniu z drugiej opcji w [4.2](#42)
 ```SQL
 alter table marynarz add primary key(pesel);
 ```
