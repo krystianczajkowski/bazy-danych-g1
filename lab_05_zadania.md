@@ -53,7 +53,8 @@ alter table postac add check (wiek <= 1000);
 # WĄŻ LOKO
 ## 4.1
 ``` SQL
-insert into postac (id_postaci, pesel, nazwa, data_ur, wiek) values (8, '00000000000','Loko', '666-06-06', 611);
+alter table postac modify rodzaj enum('wiking', 'ptak', 'kobieta', 'syrena', 'gad');
+insert into postac (id_postaci, pesel, nazwa, data_ur, wiek, rodzaj) values (8, '00000000000','Loko', '666-06-06', 611, 5);
 ```
 ## 4.2
 ```SQL
