@@ -61,8 +61,10 @@ insert into postac (id_postaci, pesel, nazwa, data_ur, wiek, rodzaj) values (8, 
 create table marynarz like postac;
 insert into marynarz (select * from postac WHERE nazwa_statku is not null);
 ```
-## 4.3 
+## 4.3
+> Przy skorzystaniu z drugiej opcji w [4.2]()
 ```SQL
+alter table marynarz add primary key(pesel);
 ```
 # SZTORM
 ## 5.1
