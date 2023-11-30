@@ -73,7 +73,7 @@ order by dataUr limit 5;
 # ZŁOTA RYBKA
 ## 4.1
 ```SQL
-select disitnct rodzaj from zasob;
+select distinct rodzaj from zasob;
 ```
 ## 4.2
 ```SQL
