@@ -31,31 +31,44 @@ from kreatura
 join ekwipunek on kreatura.idKreatury=ekwipunek.idKreatury
 join zasob on ekwipunek.idZasobu=zasob.idZasobu
 where kreatura.rodzaj != 'wiedzma'
-group by kreatura.idKreatury having sum(zasob.waga * ekwipunek.ilosc) > 50;
+group by kreatura.idKreatury
+having sum(zasob.waga * ekwipunek.ilosc) > 50;
 ```
 
 ## 2.2
 ```SQL
-select nazwa, waga from zasob where waga between 2 and 5;
+select nazwa, waga from zasob
+where waga between 2 and 5;
 ```
 ## 2.3
 ```SQL
-select kreatura.nazwa, kreatura.rodzaj from kreatura join ekwipunek on kreatura.idKreatury=ekwipunek.idKreatury join zasob on ekwipunek.idZasobu=zasob.idZasobu where kreatura.nazwa like '%or%'
-group by kreatura.idKreatury having sum(zasob.waga * ekwipunek.ilosc) > 30 and sum(zasob.waga * ekwipunek.ilosc) < 70;
+select kreatura.nazwa, kreatura.rodzaj
+from kreatura
+join ekwipunek on kreatura.idKreatury=ekwipunek.idKreatury
+join zasob on ekwipunek.idZasobu=zasob.idZasobu
+where kreatura.nazwa like '%or%'
+group by kreatura.idKreatury
+having sum(zasob.waga * ekwipunek.ilosc) > 30
+and sum(zasob.waga * ekwipunek.ilosc) < 70;
 ```
 # HAMAK
 
 ## 3.1
 ```SQL
-select * from zasob where month(dataPozyskania) in (7, 8);
+select * from zasob
+where month(dataPozyskania) in (7, 8);
 ```
 ## 3.2
 ```SQL
-select * from zasob where rodzaj is not null order by waga;
+select * from zasob
+where rodzaj is not null
+order by waga;
 ```
 ## 3.3
 ```SQL
-select * from kreatura where dataUr is not null order by dataUr limit 5;
+select * from kreatura
+where dataUr is not null
+order by dataUr limit 5;
 ```
 # ZŁOTA RYBKA
 ## 4.1
@@ -64,11 +77,13 @@ select disitnct rodzaj from zasob;
 ```
 ## 4.2
 ```SQL
-select concat(nazwa, ' - ', rodzaj) as 'nazwa - rodzaj' from kreatura where rodzaj like 'wi%';
+select concat(nazwa, ' - ', rodzaj) as 'nazwa - rodzaj'
+from kreatura where rodzaj like 'wi%';
 ```
 ## 4.3
 ```SQL
-select nazwa, (ilosc*waga) as calkowitaWaga from zasob where year(dataPozyskania) between 2000 and 2007;
+select nazwa, (ilosc*waga) as calkowitaWaga
+from zasob where year(dataPozyskania) between 2000 and 2007;
 ```
 
 # TWARDY SEN
@@ -85,5 +100,9 @@ select * from zasob where rodzaj is null;
 ```
 ## 5.3
 ```SQL
-select rodzaj from zasob where nazwa like 'Ba%' or nazwa like '%or' order by rodzaj;
+select rodzaj
+from zasob
+where nazwa like 'Ba%'
+or nazwa like '%or'
+order by rodzaj;
 ```
