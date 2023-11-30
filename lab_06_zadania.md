@@ -89,9 +89,9 @@ from zasob where year(dataPozyskania) between 2000 and 2007;
 # TWARDY SEN
 ## 5.1
 ```SQL
-select waga*ilosc as calaWaga,
-       ilosc*waga * 0.7 as jedzenieWlasciwe,
-       ilosc*waga * 0.3 as wagaOdpadow
+select (waga*ilosc) as calaWaga,
+       (ilosc*waga * 0.7) as jedzenieWlasciwe,
+       (ilosc*waga * 0.3) as wagaOdpadow
 from zasob where rodzaj = 'jedzenie';
 ```
 ## 5.2
