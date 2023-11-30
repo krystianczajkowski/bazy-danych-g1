@@ -100,7 +100,7 @@ select * from zasob where rodzaj is null;
 ```
 ## 5.3
 ```SQL
-select rodzaj
+select distinct rodzaj
 from zasob
 where nazwa like 'Ba%'
 or nazwa like '%or'
