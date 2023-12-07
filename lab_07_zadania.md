@@ -68,11 +68,11 @@ select * from kreatura where idKreatury not in (select distinct idKreatury from 
 
 ## 4.1
 ```SQL
-select k.nazwa from kreatura k
+select k.dataUr, k.nazwa, z.nazwa from kreatura k
 join ekwipunek e on k.idKreatury=e.idKreatury
 join zasob z on e.idZasobu=z.idZasobu
-where year(k.dataUr) between 1670 and 1679;
-
+where year(k.dataUr) between 1670 and 1679
+and k.rodzaj = 'wiking';
 ```
 
 ## 4.2
