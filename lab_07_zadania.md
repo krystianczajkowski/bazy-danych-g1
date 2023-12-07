@@ -9,9 +9,14 @@ select round(avg(waga), 2) as srednia_waga from kreatura where rodzaj = 'wiking'
 
 ## 1.2
 ```SQL
-select round(avg(waga), 2) as srednia_waga, rodzaj, count(rodzaj) as ilosc from kreatura group by rodzaj;
+select round(avg(waga), 2) as srednia_waga, rodzaj,
+       count(rodzaj) as ilosc
+from kreatura group by rodzaj;
+
 -- do policzenia rodzaju gdzie wartość to NULL
-select round(avg(waga), 2) as srednia_waga, rodzaj, count(*) as ilosc from kreatura group by rodzaj;
+select round(avg(waga), 2) as srednia_waga,
+       rodzaj, count(*) as ilosc
+from kreatura group by rodzaj;
 ```
 
 ## 1.3
