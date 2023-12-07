@@ -90,7 +90,7 @@ from kreatura k
 join ekwipunek e on k.idKreatury = e.idKreatury
 join zasob z on e.idZasobu = z.idZasobu
 where z.rodzaj = 'jedzenie'
-order by dU limit 5;
+order by dU desc limit 5;
 ```
 
 ## 4.3
