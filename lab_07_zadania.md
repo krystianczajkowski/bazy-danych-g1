@@ -4,7 +4,8 @@
 
 ## 1.1
 ```SQL
-select round(avg(waga), 2) as srednia_waga from kreatura where rodzaj = 'wiking';
+select round(avg(waga), 2) as srednia_waga
+from kreatura where rodzaj = 'wiking';
 ```
 
 ## 1.2
@@ -21,7 +22,8 @@ from kreatura group by rodzaj;
 
 ## 1.3
 ```SQL
-select round(avg(year(dataUr)),2) as sredni_wiek, rodzaj from kreatura group by rodzaj;
+select round(avg(year(dataUr)),2) as sredni_wiek, rodzaj
+from kreatura group by rodzaj;
 ```
 
 # DYMEK
@@ -33,12 +35,18 @@ select sum(waga*ilosc) as suma_wag, rodzaj from zasob group by rodzaj;
 
 ## 2.2
 ```SQL
-select nazwa, round(avg(waga*ilosc), 2) as srednia_waga from zasob where ilosc >= 4 group by nazwa having srednia_waga > 10;
+select nazwa, round(avg(waga*ilosc), 2) as srednia_waga
+from zasob where ilosc >= 4
+group by nazwa
+having srednia_waga > 10;
 ```
 
 ## 2.3
 ```SQL
-select rodzaj, count(distinct(nazwa)) from zasob group by rodzaj having min(ilosc) > 1;
+select rodzaj, count(distinct(nazwa)) as nazwa
+from zasob
+group by rodzaj
+having min(ilosc) > 1;
 ```
 
 # PIEPRZ
@@ -82,15 +90,16 @@ from kreatura k
 join ekwipunek e on k.idKreatury = e.idKreatury
 join zasob z on e.idZasobu = z.idZasobu
 where z.rodzaj = 'jedzenie'
-order by dU
-limit 5;
+order by dU limit 5;
 ```
 
 ## 4.3
 ```SQL
-select k1.nazwa, k2.nazwa from kreatura k1, kreatura k2 where k1.idKreatury = k2.idKreatury + 5;
-select k2.idKreatury, concat(k2.nazwa, ' - ' ,k1.nazwa) as nazwa, k1.idKreatury from kreatura k1 join kreatura k2 on k1.idKreatury = k2.idKreatury
-+ 5;
+select k1.nazwa, k2.nazwa
+from kreatura k1, kreatura k2 where k1.idKreatury = k2.idKreatury + 5;
+
+select k2.idKreatury, concat(k2.nazwa, ' - ' ,k1.nazwa) as nazwa, k1.idKreatury
+from kreatura k1 join kreatura k2 on k1.idKreatury = k2.idKreatury + 5;
 ```
 
 # ZŁA NOWINA
