@@ -106,6 +106,11 @@ from kreatura k1 join kreatura k2 on k1.idKreatury = k2.idKreatury + 5;
 
 ## 5.1
 ```SQL
+select k.rodzaj, avg(z.waga*e.ilosc) as s_waga from kreatura k, ekwipunek e, zasob z
+where k.rodzaj not in ('malpa', 'waz') group by k.rodzaj having e.ilosc < 30;
+
+select k.rodzaj, avg(z.waga*e.ilosc) as s_waga from kreatura k, ekwipunek e, zasob z where k.idKreatury=e.idKreatury and e.idZasobu=z.idZasobu group by k.rodzaj having s_waga < 30;
+
 ```
 
 ## 5.2
