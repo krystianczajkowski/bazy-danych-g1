@@ -26,6 +26,8 @@ select nazwa from kreatura
 where idKreatury not in (select distinct k.idKreatury
                         from kreatura k, uczestnicy u
                         where k.idKreatury=u.id_uczestnika);
+
+select distinct(nazwa) from kreatura k right outer join uczestnicy u on k.idKreatury=u.id_uczestnika;
 ```
 
 ## 1.3
