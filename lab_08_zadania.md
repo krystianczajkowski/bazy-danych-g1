@@ -53,6 +53,10 @@ group by w.nazwa;
 
 ## 2.2
 ```SQL
+select w.nazwa, group_concat(s.nazwa separator '-') as nazwa_sektoru from etapy_wyprawy e join sektor s on e.sektor=s.id_sektora
+join wyprawa w on e.idWyprawy=w.id_wyprawy
+group by w.nazwa;
+-- dokoncze kiedys
 ```
 
 # MISTERNY PLAN
