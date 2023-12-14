@@ -138,5 +138,6 @@ from kreatura k,
        (select rodzaj, min(dataUr) najstarsza,
         max(dataUr) najmlodsza
        from kreatura group by rodzaj) pz
-where k.dataUr=pz.najmlodsza or k.dataUr=najstarsza;
+where k.dataUr=pz.najmlodsza or k.dataUr=najstarsza
+order by rodzaj;
 ```
