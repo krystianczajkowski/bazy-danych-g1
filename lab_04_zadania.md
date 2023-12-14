@@ -2,7 +2,7 @@
 # LIST
 ## 1.1
 ``` SQL
-CREATE TABLE postac2(
+CREATE TABLE postac(
   id_postaci int PRIMARY KEY AUTO_INCREMENT,
   nazwa varchar(40) DEFAULT NULL,
   rodzaj enum('wiking','ptak','kobieta') DEFAULT NULL,
