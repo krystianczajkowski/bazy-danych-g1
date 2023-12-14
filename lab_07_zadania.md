@@ -10,8 +10,8 @@ from kreatura where rodzaj = 'wiking';
 
 ## 1.2
 ```SQL
-select round(avg(waga), 2) as srednia_waga, rodzaj,
-       count(rodzaj) as ilosc
+select round(avg(waga), 2) as srednia_waga,
+       rodzaj, count(rodzaj) as ilosc
 from kreatura group by rodzaj;
 
 -- do policzenia rodzaju gdzie wartość to NULL
@@ -30,7 +30,8 @@ from kreatura group by rodzaj;
 
 ## 2.1
 ```SQL
-select sum(waga*ilosc) as suma_wag, rodzaj from zasob group by rodzaj;
+select sum(waga*ilosc) as suma_wag, rodzaj
+from zasob group by rodzaj;
 ```
 
 ## 2.2
@@ -68,8 +69,14 @@ join zasob z on e.idZasobu=z.idZasobu;
 
 ## 3.3
 ```SQL
-select * from kreatura k left join ekwipunek e on k.idKreatury = e.idKreatury where e.idKreatury is NULL;
-select * from kreatura where idKreatury not in (select distinct idKreatury from ekwipunek where idKreatury is not null);
+select * from kreatura k
+left join ekwipunek e on k.idKreatury = e.idKreatury
+where e.idKreatury is NULL;
+
+select * from kreatura
+where idKreatury
+not in (select distinct idKreatury
+       from ekwipunek where idKreatury is not null);
 ```
 
 # DZIADEK
@@ -80,7 +87,7 @@ select k.dataUr, k.nazwa, z.nazwa from kreatura k
 join ekwipunek e on k.idKreatury=e.idKreatury
 join zasob z on e.idZasobu=z.idZasobu
 where year(k.dataUr) between 1670 and 1679
-and k.rodzaj = 'wiking';
+       and k.rodzaj = 'wiking';
 ```
 
 ## 4.2
@@ -96,23 +103,40 @@ order by dU desc limit 5;
 ## 4.3
 ```SQL
 select k1.nazwa, k2.nazwa
-from kreatura k1, kreatura k2 where k1.idKreatury = k2.idKreatury + 5;
+from kreatura k1, kreatura k2
+where k1.idKreatury = k2.idKreatury + 5;
 
-select k2.idKreatury, concat(k2.nazwa, ' - ' ,k1.nazwa) as nazwa, k1.idKreatury
-from kreatura k1 join kreatura k2 on k1.idKreatury = k2.idKreatury + 5;
+select k2.idKreatury,
+       concat(k2.nazwa, ' - ' ,k1.nazwa) as nazwa,
+       k1.idKreatury
+from kreatura k1
+join kreatura k2 on k1.idKreatury = k2.idKreatury + 5;
+
+select k1.nazwa, k2.nazwa
+from kreatura k1, kreatura k2
+where abs(k1.idKreatury - k2.idKreatury) = 5;
 ```
 
 # ZŁA NOWINA
 
 ## 5.1
 ```SQL
-select k.rodzaj, avg(z.waga*e.ilosc) as s_waga from kreatura k, ekwipunek e, zasob z
-where k.rodzaj not in ('malpa', 'waz') group by k.rodzaj having e.ilosc < 30;
-
-select k.rodzaj, avg(z.waga*e.ilosc) as s_waga from kreatura k, ekwipunek e, zasob z where k.idKreatury=e.idKreatury and e.idZasobu=z.idZasobu group by k.rodzaj having s_waga < 30;
-
+--               sum(e.ilosc * z.waga)/count(*)
+select k.rodzaj, avg(z.waga*e.ilosc) as s_waga
+from kreatura k
+join ekwipunek e on k.idKreatury = e.idKreatury
+join zasob z on e.idZasobu = z.idZasobu
+where k.rodzaj not in ('malpa', 'waz')
+       and e.ilosc < 30
+group by k.rodzaj;
 ```
 
 ## 5.2
 ```SQL
+select k.nazwa, k.dataUr, k.rodzaj
+from kreatura k,
+       (select rodzaj, min(dataUr) najstarsza,
+        max(dataUr) najmlodsza
+       from kreatura group by rodzaj) pz
+where k.dataUr=pz.najmlodsza or k.dataUr=najstarsza;
 ```
