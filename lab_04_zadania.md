@@ -2,12 +2,12 @@
 # LIST
 ## 1.1
 ``` SQL
-CREATE TABLE `postac` (
-  `id_postaci` int NOT NULL AUTO_INCREMENT,
-  `nazwa` varchar(40) DEFAULT NULL,
-  `rodzaj` enum('wiking','ptak','kobieta') DEFAULT NULL,
-  `data_ur` date DEFAULT NULL,
-  `wiek` int unsigned DEFAULT NULL,
+CREATE TABLE postac(
+  id_postaci int NOT NULL AUTO_INCREMENT,
+  nazwa varchar(40) DEFAULT NULL,
+  rodzaj enum('wiking','ptak','kobieta') DEFAULT NULL,
+  data_ur date DEFAULT NULL,
+  wiek int unsigned DEFAULT NULL,
   PRIMARY KEY (`id_postaci`);
 ```
 ## 1.2
@@ -35,7 +35,8 @@ FOREIGN KEY(id_wlasciciela) REFERENCES postac(id_postaci) ON DELETE CASCADE
 
 ## 2.2
 ``` SQL
- ALTER TABLE walizka MODIFY COLUMN kolor ENUM('rozowy', 'czerwony', 'teczowy', 'zolty') DEFAULT 'rozowy';
+ ALTER TABLE walizka MODIFY COLUMN
+  kolor ENUM('rozowy', 'czerwony', 'teczowy', 'zolty') DEFAULT 'rozowy';
 ```
 
 *albo*
@@ -84,12 +85,14 @@ FOREIGN KEY(id_wykonawcy) REFERENCES postac(id_postaci),
 FOREIGN KEY(id_konsumenta) REFERENCES postac(id_postaci)
 );
 ```
+
 ## 4.2
 ``` SQL
 INSERT INTO przetwory(id_wykonawcy, zawartosc, id_konsumenta) VALUES (1, 'Bigos', 3);
 ```
 
 # UCIECZKA
+
 ## 5.1
 ``` SQL
 INSERT INTO postac(nazwa, rodzaj, data_ur, wiek) VALUES('Birger', 1, '1255-11-08', 18);
@@ -98,6 +101,7 @@ INSERT INTO postac(nazwa, rodzaj, data_ur, wiek) VALUES('Erik', 1, '1256-11-08',
 INSERT INTO postac(nazwa, rodzaj, data_ur, wiek) VALUES('Gorm', 1, '1253-11-08', 20);
 INSERT INTO postac(nazwa, rodzaj, data_ur, wiek) VALUES('Halfdan', 1, '1252-11-08', 21);
 ```
+
 ## 5.2
 ``` SQL
 CREATE TABLE statek(
@@ -108,6 +112,7 @@ rodzaj_statku ENUM('barka', 'pchacz', 'prom',
 data_wodowania DATE,
 max_ladownosc INT UNSIGNED);
 ```
+
 ## 5.3
 ``` SQL
 INSERT INTO statek(nazwa_statku, rodzaj_statku, data_wodowania, max_ladownosc) VALUES ('Mors', 1, '1234-11-08', 12000);
@@ -140,5 +145,4 @@ DELETE FROM izba WHERE nazwa_izby='spizarnia';
 ```SQL
 DROP TABLE izba;
 ```  
-
 
