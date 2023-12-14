@@ -2,13 +2,13 @@
 # LIST
 ## 1.1
 ``` SQL
-CREATE TABLE postac(
-  id_postaci int NOT NULL AUTO_INCREMENT,
+CREATE TABLE postac2(
+  id_postaci int PRIMARY KEY AUTO_INCREMENT,
   nazwa varchar(40) DEFAULT NULL,
   rodzaj enum('wiking','ptak','kobieta') DEFAULT NULL,
   data_ur date DEFAULT NULL,
-  wiek int unsigned DEFAULT NULL,
-  PRIMARY KEY (`id_postaci`);
+  wiek int unsigned DEFAULT NULL
+);
 ```
 ## 1.2
 ``` SQL
