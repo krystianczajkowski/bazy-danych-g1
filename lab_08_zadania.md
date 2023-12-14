@@ -44,7 +44,11 @@ group by w.nazwa;
 
 ## 2.1
 ```SQL
-
+select w.nazwa, count(u.id_uczestnika) as liczba_uczestnikow, group_concat(k.nazwa separator ' - ') as uczestnicy from
+wyprawa w join uczestnicy u on
+w.id_wyprawy=u.id_wyprawy
+join kreatura k on k.idKreatury=u.id_uczestnika
+group by w.nazwa;
 ```
 
 ## 2.2
