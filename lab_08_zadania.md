@@ -53,16 +53,24 @@ group by w.nazwa;
 
 ## 2.2
 ```SQL
-select w.nazwa, group_concat(s.nazwa separator '-') as nazwa_sektoru from etapy_wyprawy e join sektor s on e.sektor=s.id_sektora
+select k.nazwa, w.nazwa, s.nazwa as nazwa_sektora, e.idEtapu
+from etapy_wyprawy e
+join sektor s on e.sektor=s.id_sektora
 join wyprawa w on e.idWyprawy=w.id_wyprawy
-group by w.nazwa;
--- dokoncze kiedys
+join kreatura k on w.kierownik=k.idKreatury
+order by w.data_rozpoczecia and e.kolejnosc;
 ```
 
 # MISTERNY PLAN
 
 ## 3.1
 ```SQL
+select distinct(s.nazwa) as nazwa_sektora,
+       count(s.id_sektora) as liczba_odwiedzin
+from etapy_wyprawy e
+join sektor s on e.sektor=s.id_sektora
+join wyprawa w on e.idWyprawy=w.id_wyprawy
+group by nazwa_sektora;
 ```
 
 ## 3.2
