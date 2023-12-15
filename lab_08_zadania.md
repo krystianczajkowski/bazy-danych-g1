@@ -69,7 +69,6 @@ select distinct(s.nazwa) as nazwa_sektora,
        count(s.id_sektora) as liczba_odwiedzin
 from etapy_wyprawy e
 join sektor s on e.sektor=s.id_sektora
-join wyprawa w on e.idWyprawy=w.id_wyprawy
 group by nazwa_sektora;
 -- nie wypisuje 0 dla nieodwiedzonych sektorów :(
 ```
