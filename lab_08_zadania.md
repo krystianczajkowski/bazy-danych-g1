@@ -88,7 +88,9 @@ group by s.nazwa;
 
 ## 3.2
 ```SQL
-select k.nazwa, if(count(u.id_uczestnika) > 0, "bral udzial", "nie bral") as udzial from kreatura k
+select k.nazwa, if(count(u.id_uczestnika) > 0,
+                "bral udzial", "nie bral") as udzial
+from kreatura k
 left join uczestnicy u on k.idKreatury=u.id_uczestnika
 group by k.nazwa;
 ```
@@ -97,7 +99,8 @@ group by k.nazwa;
 
 ## 4.1
 ```SQL
-select w.nazwa, sum(length(ew.dziennik)) as liczba_znakow from wyprawa w
+select w.nazwa, sum(length(ew.dziennik)) as liczba_znakow
+from wyprawa w
 join etapy_wyprawy ew on w.id_wyprawy=ew.idWyprawy
 group by w.nazwa
 having liczba_znakow < 400;
@@ -105,7 +108,8 @@ having liczba_znakow < 400;
 
 ## 4.2
 ```SQL
-select w.nazwa as nazwa_wyprawy, sum(z.waga*e.ilosc)/count(distinct(u.id_uczestnika)) as niesione_rzeczy
+select w.nazwa as nazwa_wyprawy,
+       sum(z.waga*e.ilosc)/count(distinct(u.id_uczestnika)) as niesione_rzeczy
 from kreatura k
 join ekwipunek e on k.idKreatury=e.idKreatury
 join uczestnicy u on k.idKreatury=u.id_uczestnika
