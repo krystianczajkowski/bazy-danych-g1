@@ -105,7 +105,7 @@ having liczba_znakow < 400;
 
 ## 4.2
 ```SQL
-select w.nazwa as nazwa_wyprawy, avg(z.waga*e.ilosc) as niesione_rzeczy
+select w.nazwa as nazwa_wyprawy, sum(z.waga*e.ilosc)/count(distinct(u.id_uczestnika)) as niesione_rzeczy
 from kreatura k
 join ekwipunek e on k.idKreatury=e.idKreatury
 join uczestnicy u on k.idKreatury=u.id_uczestnika
