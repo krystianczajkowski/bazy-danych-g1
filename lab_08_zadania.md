@@ -65,12 +65,17 @@ order by w.data_rozpoczecia and e.kolejnosc;
 
 ## 3.1
 ```SQL
+select nazwa as nazwa_sektora, 0 as liczba_odwiedzin
+from sektor
+where id_sektora not in (select distinct(s.id_sektora)
+                         from sektor s, etapy_wyprawy e
+                         where s.id_sektora=e.sektor)
+union
 select distinct(s.nazwa) as nazwa_sektora,
        count(s.id_sektora) as liczba_odwiedzin
 from etapy_wyprawy e
 join sektor s on e.sektor=s.id_sektora
 group by nazwa_sektora;
--- nie wypisuje 0 dla nieodwiedzonych sektorów :(
 ```
 
 ## 3.2
