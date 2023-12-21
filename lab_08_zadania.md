@@ -44,8 +44,9 @@ group by w.nazwa;
 
 ## 2.1
 ```SQL
-select w.nazwa, count(u.id_uczestnika) as liczba_uczestnikow, group_concat(k.nazwa separator ' - ') as uczestnicy from
-wyprawa w join uczestnicy u on
+select w.nazwa, count(u.id_uczestnika) as liczba_uczestnikow,
+       group_concat(k.nazwa separator ' - ') as uczestnicy
+from wyprawa w join uczestnicy u on
 w.id_wyprawy=u.id_wyprawy
 join kreatura k on k.idKreatury=u.id_uczestnika
 group by w.nazwa;
@@ -53,12 +54,13 @@ group by w.nazwa;
 
 ## 2.2
 ```SQL
-select k.nazwa, w.nazwa, s.nazwa as nazwa_sektora, e.idEtapu
+select k.nazwa, w.nazwa,
+       s.nazwa as nazwa_sektora, e.idEtapu, w.data_rozpoczecia
 from etapy_wyprawy e
 join sektor s on e.sektor=s.id_sektora
 join wyprawa w on e.idWyprawy=w.id_wyprawy
 join kreatura k on w.kierownik=k.idKreatury
-order by w.data_rozpoczecia and e.kolejnosc;
+order by w.data_rozpoczecia, e.kolejnosc;
 ```
 
 # MISTERNY PLAN
