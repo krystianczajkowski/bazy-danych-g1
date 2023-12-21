@@ -118,4 +118,11 @@ group by w.nazwa;
 
 ## 5.1
 ```SQL
+select k.nazwa, datediff(w.data_rozpoczecia, k.dataUr) as wiek
+from sektor s
+join etapy_wyprawy ew on s.id_sektora=ew.sektor
+join wyprawa w on w.id_wyprawy = ew.idWyprawy
+join uczestnicy u on w.id_wyprawy=u.id_wyprawy
+join kreatura k on k.idKreatury=u.id_uczestnika
+where s.nazwa = 'Chatka Dziadka';
 ```
