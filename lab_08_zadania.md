@@ -27,7 +27,8 @@ where idKreatury not in (select distinct k.idKreatury
                         from kreatura k, uczestnicy u
                         where k.idKreatury=u.id_uczestnika);
 
-select distinct(nazwa) from kreatura k right outer join uczestnicy u on k.idKreatury=u.id_uczestnika;
+select distinct(nazwa) from kreatura k
+right outer join uczestnicy u on k.idKreatury=u.id_uczestnika;
 ```
 
 ## 1.3
@@ -78,21 +79,39 @@ select distinct(s.nazwa) as nazwa_sektora,
 from etapy_wyprawy e
 join sektor s on e.sektor=s.id_sektora
 group by nazwa_sektora;
+
+select s.nazwa, ifnull(count(ew.sektor), 0) as liczba_odwiedzin
+from sektor s
+left join etapy_wyprawy ew on s.id_sektora=ew.sektor
+group by s.nazwa;
 ```
 
 ## 3.2
 ```SQL
-
+select k.nazwa, if(count(u.id_uczestnika) > 0, "bral udzial", "nie bral") as udzial from kreatura k
+left join uczestnicy u on k.idKreatury=u.id_uczestnika
+group by k.nazwa;
 ```
 
 # PUŁAPKA
 
 ## 4.1
 ```SQL
+select w.nazwa, sum(length(ew.dziennik)) as liczba_znakow from wyprawa w
+join etapy_wyprawy ew on w.id_wyprawy=ew.idWyprawy
+group by w.nazwa
+having liczba_znakow < 400;
 ```
 
 ## 4.2
 ```SQL
+select w.nazwa as nazwa_wyprawy, avg(z.waga*e.ilosc) as niesione_rzeczy
+from kreatura k
+join ekwipunek e on k.idKreatury=e.idKreatury
+join uczestnicy u on k.idKreatury=u.id_uczestnika
+join wyprawa w on u.id_wyprawy=w.id_wyprawy
+join zasob z on z.idZasobu=e.idZasobu
+group by w.nazwa;
 ```
 
 # TCHÓRZ
