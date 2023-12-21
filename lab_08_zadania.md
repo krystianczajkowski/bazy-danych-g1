@@ -110,9 +110,8 @@ having liczba_znakow < 400;
 ```SQL
 select w.nazwa as nazwa_wyprawy,
        sum(z.waga*e.ilosc)/count(distinct(u.id_uczestnika)) as niesione_rzeczy
-from kreatura k
-join ekwipunek e on k.idKreatury=e.idKreatury
-join uczestnicy u on k.idKreatury=u.id_uczestnika
+from ekwipunek e
+join uczestnicy u on e.idKreatury=u.id_uczestnika
 join wyprawa w on u.id_wyprawy=w.id_wyprawy
 join zasob z on z.idZasobu=e.idZasobu
 group by w.nazwa;
