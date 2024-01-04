@@ -71,16 +71,47 @@ delimiter ;
 
 ## 3.2
 ```SQL
+create function wielkie_litery (t text)
+  returns text
+  return upper(t);
 ```
 
 # SALWA ŚMIECHU
 
 ## 4.1
 ```SQL
+create table system_alarmowy(
+id_alarmu int primary key auto_increment,
+wiadomosc text);
 ```
 
-## 4.1
+## 4.2
 ```SQL
+select idKreatury from kreatura where nazwa = 'Tesciowa' into @tesciowa;
+select id_sektora from sektor where nazwa = 'Chatka Dziadka' into @dziad;
+declare czy_tesc bool;
+declare czy_dzial bool;
+
+delimiter //
+create trigger system_alarmowy_after_insert on uczestnicy
+  for each row
+  begin
+    if @tesciowa in
+      (select id_uczestnika from uczestnicy where id_wyprawy=new.id_wyprawy)
+    then
+      set czy_tesc = true;
+    end if;
+    if @dziad in
+      (select sektor from etapy_wyprawy where id_wyprawy=new.id_wyprawy)
+    then
+      set czy_dziad = true
+    end if;
+
+    if czy_tesc and czy_dziad then
+      insert into system_alarmowy values(default, 'Tesciowa nadchodzi !!!', default);
+    end if;
+  end//
+delimiter ;
 ```
 
 # HAPPY END
