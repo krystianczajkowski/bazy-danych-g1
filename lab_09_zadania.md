@@ -11,7 +11,9 @@ create trigger kreatura_before_insert before insert on kreatura
       signal sqlstate '45000' set message_text = 'waga mniejsza od 0';
     end if;
   end//
+delimiter ;
 
+delimiter //
 create trigger kreatura_before_update before update on kreatura
   for each row
   begin
@@ -19,7 +21,9 @@ create trigger kreatura_before_update before update on kreatura
       signal sqlstate '45000' set message_text = 'waga mniejsza od 0';
     end if;
   end//
+delimiter ;
 
+delimiter //
 create trigger kratura_before_insert before insert on kreatura
   for each row
   begin
@@ -27,7 +31,6 @@ create trigger kratura_before_insert before insert on kreatura
       set new.waga = 1;
     end if;
   end//
-
 delimiter ;
 ```
 
@@ -58,6 +61,12 @@ delimiter ;
 
 ## 3.1
 ```SQL
+delimiter //
+create procedure eliksir_sily (in id int)
+  begin
+    update kreatura set udzwig = udzwig * 1.2 where idKreatury = id;
+  end//
+delimiter ;
 ```
 
 ## 3.2
