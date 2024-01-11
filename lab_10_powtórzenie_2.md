@@ -11,7 +11,10 @@ group by d.nazwa;
 
 ## 2
 ```SQL
-select
+select k.pelna_nazwa, (p.ilosc*p.cena) as wartosc_zamowienia from klient k
+join zamowienie z on k.id_klienta=z.klient
+join pozycja_zamowienia p on z.id_zamowienia=p.zamowienie
+order by wartosc_zamowienia desc limit 10;
 ```
 
 ## 3
@@ -20,14 +23,18 @@ select
 
 ## 4
 ```SQL
+select sum(ilosc*cena) as anulowane_zamowienia from pozycja_zamowienia p, zamowienie z
+where p.zamowienie=z.id_zamowienia and z.status_zamowienia=6;
 ```
 
 ## 5
 ```SQL
+select count(
 ```
 
 ## 6
 ```SQL
+select 
 ```
 
 ## 7
@@ -36,6 +43,7 @@ select
 
 ## 8
 ```SQL
+select ilosc
 ```
 
 ## 9
