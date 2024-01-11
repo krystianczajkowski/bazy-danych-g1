@@ -21,6 +21,7 @@ group by nazwa;
 
 ## 4
 ```SQL
+select nazwa from 
 ```
 
 ## 5
