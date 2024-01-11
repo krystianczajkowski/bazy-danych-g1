@@ -1,4 +1,4 @@
-# Linki do zadań (1)[https://github.com/kropiak/zti_bazy/blob/master/lab_3/lab_3_zadania_1.md] (2)[https://github.com/kropiak/zti_bazy/blob/master/lab_3/lab_3_zadania_2.md]
+# Linki do zadań [1](https://github.com/kropiak/zti_bazy/blob/master/lab_3/lab_3_zadania_1.md) [2](https://github.com/kropiak/zti_bazy/blob/master/lab_3/lab_3_zadania_2.md)
 
 # Funkcje, agregacja i grupowanie.
 
