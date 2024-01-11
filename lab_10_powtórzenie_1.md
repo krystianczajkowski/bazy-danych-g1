@@ -72,5 +72,6 @@ select pr.imie, pr.nazwisko, sum(p.ilosc*p.cena) suma
 from zamowienie z
 join pozycja_zamowienia p on z.id_zamowienia=p.zamowienie
 join pracownik pr on pr.id_pracownika=z.pracownik_id_pracownika
-group by pr.id_pracownika;
+group by pr.id_pracownika
+order by suma desc;
 ```
