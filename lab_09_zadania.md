@@ -93,7 +93,7 @@ declare czy_tesc bool;
 declare czy_dzial bool;
 
 delimiter //
-create trigger system_alarmowy_after_insert on uczestnicy
+create trigger system_alarmowy_after_insert after insert on uczestnicy
   for each row
   begin
     if @tesciowa in
@@ -118,9 +118,19 @@ delimiter ;
 
 ## 5.1
 ```SQL
+delimiter //
+-- SSMUiK średnia, suma, max udźwig i kreatury
+create procedure ssmuik(out avg float, out suma int, out max_load int )
+  begin
+    select sum(udzwig)/count(*) as avg, sum(udzwig) as suma, max(udzwig) as max_load from kreatura;
+  end//
+delimiter ;
 ```
 
 ## 5.2
 ```SQL
+create procedure wyprawa_sektory(in id_wyprawy int, out numer_sektora int)
+  begin
+  end;
 ```
 
